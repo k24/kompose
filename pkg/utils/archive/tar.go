@@ -75,6 +75,10 @@ func CreateTarball(source, target string) error {
 				return err
 			}
 
+			if !info.Mode().IsRegular() { // nothing more to do for non-regular
+				return nil
+			}
+
 			if info.IsDir() {
 				return nil
 			}
